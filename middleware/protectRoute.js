@@ -19,7 +19,7 @@ const protectRoute = async (req, res, next) => {
         // Verify token
         let decoded;
         try {
-            decoded = jwt.verify(token, process.env.JWT_SECRET);
+            decoded = jwt.verify( process.env.JWT_SECRET);
         } catch (err) {
             return res.status(401).json({ error: "Unauthorized - Invalid or Expired Token" });
         }
