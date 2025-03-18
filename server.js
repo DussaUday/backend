@@ -31,10 +31,10 @@ app.use(cors({
 
 
 app.use("/auth", authRoutes);
-app.use("/api/messages", messageRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/posts", postRoutes);
-app.use("/api/games", gameRoutes);
+app.use("/messages", messageRoutes);
+app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
+app.use("/games", gameRoutes);
 
 
 
