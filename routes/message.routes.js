@@ -19,10 +19,10 @@ export const storage = multer.diskStorage({
   
   const upload = multer({ storage: storage });
   
-router.get("/:id", getMessages);
-router.get("/", getUsersForSidebar);
-router.post("/send/:id", upload.single("file"), sendMessage); // Add Multer middle
-router.post("/like/:messageId", likeMessage);
-router.delete("/delete/:messageId", deleteMessage);
-router.get("/last/:id", getLastMessage);
+router.get("/:id",protectRoute, getMessages);
+router.get("/",protectRoute, getUsersForSidebar);
+router.post("/send/:id",protectRoute, upload.single("file"), sendMessage); // Add Multer middle
+router.post("/like/:messageId",protectRoute, likeMessage);
+router.delete("/delete/:messageId",protectRoute, deleteMessage);
+router.get("/last/:id",protectRoute, getLastMessage);
 export default router;
