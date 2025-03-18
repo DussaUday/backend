@@ -8,13 +8,13 @@ import { followUser , sendFollowRequest,acceptFollowRequest,rejectFollowRequest,
 const router = express.Router();
 
 router.get("/",protectRoute, getUsersForSidebar);
-router.get("/:id", getUserProfile);
-router.delete("/account/delete", deleteAccount); // Correct route!
-//router.post("/block/:id", blockUser);
-router.post("/follow/:userId", sendFollowRequest);
-router.post("/accept-follow/:userId", acceptFollowRequest);
-router.post("/reject-follow/:userId", rejectFollowRequest);
-router.get("/:userId/follow-status", checkFollowStatus);
-router.post("/unfollow/:userId", unfollowUser);
+router.get("/:id",protectRoute, getUserProfile);
+router.delete("/account/delete",protectRoute, deleteAccount); // Correct route!
+//router.post("/block/:id",protectRoute, blockUser);
+router.post("/follow/:userId",protectRoute, sendFollowRequest);
+router.post("/accept-follow/:userId",protectRoute, acceptFollowRequest);
+router.post("/reject-follow/:userId",protectRoute, rejectFollowRequest);
+router.get("/:userId/follow-status",protectRoute, checkFollowStatus);
+router.post("/unfollow/:userId",protectRoute, unfollowUser);
 
 export default router;
