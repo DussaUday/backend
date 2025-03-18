@@ -5,11 +5,11 @@ import upload from "../middleware/upload.js";
 
 const router = express.Router();
 
-router.post("/create", upload.single("media"), createPost);
-router.get("/getPosts", getPosts);
-router.post("/like/:postId", likePost);
-router.post("/comment/:postId", commentPost);
-router.delete("/delete/:postId", deletePost);
-router.get("/current-user", getCurrentUserPosts);
+router.post("/create",protectRoute, upload.single("media"), createPost);
+router.get("/getPosts",protectRoute, getPosts);
+router.post("/like/:postId",protectRoute, likePost);
+router.post("/comment/:postId",protectRoute, commentPost);
+router.delete("/delete/:postId",protectRoute, deletePost);
+router.get("/current-user",protectRoute, getCurrentUserPosts);
 
 export default router;
