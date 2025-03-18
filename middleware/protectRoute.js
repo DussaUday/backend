@@ -11,13 +11,15 @@ app.use(express.json());
 const protectRoute = async (req, res, next) => {
     try {
         // Check if token exists
-        
-        
+        const token = req.cookies.jwt;
+        if (!token) {
+            return res.status(401).json({ error: "Unauthorized - No Token Provided" });
+        }
 
         // Verify token
         let decoded;
         try {
-            decoded = jwt.verify( process.env.JWT_SECRET);
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
         } catch (err) {
             return res.status(401).json({ error: "Unauthorized - Invalid or Expired Token" });
         }
@@ -38,3 +40,4 @@ const protectRoute = async (req, res, next) => {
 };
 
 export default protectRoute;
+
