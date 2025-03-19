@@ -11,7 +11,7 @@ app.use(express.json());
 const protectRoute = async (req, res, next) => {
     try {
         // Check if token exists
-        const token = req.cookies?.token || req.headers.authorization?.split(" ")[1];
+        const token = req.cookies.jwt;
         if (!token) {
             return res.status(401).json({ error: "Unauthorized - No Token Provided" });
         }
@@ -40,4 +40,3 @@ const protectRoute = async (req, res, next) => {
 };
 
 export default protectRoute;
-
