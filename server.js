@@ -24,8 +24,9 @@ app.use(express.json()); // to parse the incoming requests with JSON payloads (f
 app.use(cookieParser());
 app.use(cors({
   origin: ["https://socialty.vercel.app"], 
-  methods: ["POST", "GET"],// Your frontend URL
-  credentials: true,
+  credentials: true, // Allow cookies
+methods: ["GET", "POST", "PUT", "DELETE"],
+allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
 
