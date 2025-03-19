@@ -7,7 +7,7 @@ import { deleteAccount } from "../controllers/auth.controller.js";
 import { followUser , sendFollowRequest,acceptFollowRequest,rejectFollowRequest, checkFollowStatus, unfollowUser} from "../controllers/user.controller.js";
 const router = express.Router();
 
-router.get("/",protectRoute, getUsersForSidebar);
+router.get("/", getUsersForSidebar);
 router.get("/:id",protectRoute, getUserProfile);
 router.delete("/account/delete",protectRoute, deleteAccount); // Correct route!
 //router.post("/block/:id",protectRoute, blockUser);
